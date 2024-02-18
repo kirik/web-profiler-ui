@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WEB profiler ui</title>
+    <script>
+        function loadFile(filename) {
+            return new Promise((resolve) => {
+                let xhr = new XMLHttpRequest();
+                xhr.open('GET', filename, true);
+                // function execute after request is successful
+                xhr.onreadystatechange = function () {
+                    if (this.readyState === 4 && this.status === 200) {
+                        resolve({filename: filename, data: this.responseText});
+                    }
+                };
+                // Sending our request
+                xhr.send();
+            });
+        }
+
+        try {
+            Promise.all([loadFile('template.html'), loadFile('script.js'), loadFile('style.css'), loadFile('example/data/initial.json')]).then((values) => {
+                var files = {};
+                for (let i in values) {
+                    files[values[i].filename] = values[i].data;
+                }
+                let js = files['script.js'].replace('/**initJson**/', JSON.stringify({
+                    css: files['style.css'],
+                    data: JSON.parse(files['example/data/initial.json'])
+                }));
+                let container = document.createElement('div');
+                container.innerHTML = files['template.html'].replace('/**script**/', js);
+
+                // activate JS
+                let oldScriptNode = container.getElementsByTagName('script')[0];
+                var newScriptNode = document.createElement("script");
+                newScriptNode.text = oldScriptNode.innerHTML;
+                oldScriptNode.parentNode.replaceChild(newScriptNode, oldScriptNode);
+                document.body.appendChild(container);
+            });
+            // do other actions
+        } catch (ex) {
+        }
+
+        function loadAjax() {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', 'example/data/ajax.json', true);
+            // function execute after request is successful
+            xhr.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    console.log(this.responseText)
+                }
+            };
+            // Sending our request
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+<button onclick="loadAjax()">Load ajax</button>
+</body>
+</html>

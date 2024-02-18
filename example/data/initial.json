@@ -1,0 +1,200 @@
+{
+  "request_uri": "\/dbg\/",
+  "request_headers": [],
+  "response_headers": [],
+  "total_time": "-",
+  "peak_memory": 4194304,
+  "collectors_data": {
+    "Base\\PhpProfiler\\Collector\\LocalCache": {
+      "props": {
+        "title": "LocalCache",
+        "cssColor": "#00FFCC",
+        "template": "table",
+        "metrics": {
+          "query": {
+            "title": "Query",
+            "type": "text"
+          },
+          "duration": {
+            "title": "Duration",
+            "type": "seconds"
+          },
+          "memory": {
+            "title": "Memory",
+            "type": "bytes"
+          },
+          "rows_count": {
+            "title": "Rows",
+            "type": "integer"
+          },
+          "__start_time": {
+            "title": "Start time",
+            "type": "seconds"
+          },
+          "__duration": {
+            "title": "Duration",
+            "type": "seconds"
+          },
+          "method": {
+            "title": "Method",
+            "type": "string"
+          }
+        }
+      },
+      "duration": 0.0017809867858886719,
+      "data": [
+        {
+          "query": "GET brand_settings_5",
+          "__start_time": 1708231434.468543,
+          "duration": 0.0017790794372558594,
+          "memory": 2816,
+          "rows_count": 1,
+          "method": "Base\\BrandSettings::_getSettings",
+          "__duration": 0.0017809867858886719
+        }
+      ]
+    },
+    "Base\\PhpProfiler\\Collector\\ES": {
+      "props": {
+        "title": "ES",
+        "cssColor": "#CC0099",
+        "template": "table",
+        "metrics": {
+          "query": {
+            "title": "Query",
+            "type": "text"
+          },
+          "duration": {
+            "title": "Duration",
+            "type": "seconds"
+          },
+          "memory": {
+            "title": "Memory",
+            "type": "bytes"
+          },
+          "rows_count": {
+            "title": "Rows",
+            "type": "integer"
+          },
+          "__start_time": {
+            "title": "Start time",
+            "type": "seconds"
+          },
+          "__duration": {
+            "title": "Duration",
+            "type": "seconds"
+          }
+        }
+      },
+      "duration": 0.04324603080749512,
+      "data": [
+        {
+          "query": "GET MAPPING {\"index\":\"ww.cat_users\"}",
+          "__start_time": 1708231434.636523,
+          "duration": 0.04324698448181152,
+          "memory": 46288,
+          "rows_count": 0,
+          "__duration": 0.04324603080749512
+        }
+      ]
+    },
+    "Base\\PhpProfiler\\Collector\\MySQL": {
+      "props": {
+        "title": "MySQL",
+        "cssColor": "#0000FF",
+        "template": "table",
+        "metrics": {
+          "query": {
+            "title": "Query",
+            "type": "text"
+          },
+          "duration": {
+            "title": "Duration",
+            "type": "seconds"
+          },
+          "memory": {
+            "title": "Memory",
+            "type": "bytes"
+          },
+          "rows_count": {
+            "title": "Rows",
+            "type": "integer"
+          },
+          "__start_time": {
+            "title": "Start time",
+            "type": "seconds"
+          },
+          "__duration": {
+            "title": "Duration",
+            "type": "seconds"
+          },
+          "method": {
+            "title": "Method",
+            "type": "string"
+          }
+        }
+      },
+      "duration": 0.061868906021118164,
+      "data": [
+        {
+          "query": "connect",
+          "__start_time": 1708231434.727932,
+          "duration": 0.019603967666625977,
+          "memory": 920,
+          "rows_count": 0,
+          "method": "Base\\Driver\\SQL\\Server::_connect",
+          "__duration": 0.019613027572631836
+        },
+        {
+          "query": "USE `sac`",
+          "__start_time": 1708231434.747614,
+          "duration": 0.021682024002075195,
+          "memory": 752,
+          "rows_count": 0,
+          "method": "Base\\Driver\\SQL\\Server::_switchDb",
+          "__duration": 0.021687984466552734
+        },
+        {
+          "query": "SELECT `users`.* FROM `users` LIMIT 1 OFFSET 0",
+          "__start_time": 1708231434.769457,
+          "duration": 0.02056598663330078,
+          "memory": 22792,
+          "rows_count": 1,
+          "method": "App\\Dbg\\Controller\\Index::indexAction",
+          "__duration": 0.020567893981933594
+        }
+      ]
+    },
+    "Base\\PhpProfiler\\Collector\\Log": {
+      "props": {
+        "title": "Log",
+        "cssColor": "#663333",
+        "template": "table",
+        "metrics": {
+          "message": {
+            "title": "Message",
+            "type": "json"
+          },
+          "file_line": {
+            "title": "File",
+            "type": "string"
+          },
+          "time": {
+            "title": "Time",
+            "type": "unixtime"
+          }
+        }
+      },
+      "duration": 0,
+      "data": [
+        {
+          "message": "\"test\"",
+          "file_line": "\/var\/www\/html\/App\/Dbg\/Controller\/Index.php:362",
+          "time": 1708231434
+        }
+      ]
+    }
+  },
+  "start_time": 1708231434.391469,
+  "duration": 0.39930295944213867
+}

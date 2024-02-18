@@ -1,0 +1,262 @@
+body, html {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+#__web_profiler_container {
+    background-color: #fff;
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9em;
+    width: 100%;
+    height: 100%;
+}
+
+#__web_profiler_container a {
+    text-decoration: none;
+}
+
+#__web_profiler_container .collectors {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100%;
+    max-width: 85%;
+}
+
+#__web_profiler_container .header {
+    display: flex;
+    background: #e6e6e6;
+}
+
+#__web_profiler_container .header .header-tabs {
+    flex-grow: 1;
+    height: 45px;
+}
+
+#__web_profiler_container .header .header-ctrl {
+    display: flex;
+    align-items: center;
+    height: 45px;
+}
+
+#__web_profiler_container .header .header-ctrl a {
+    margin-right: 15px;
+    display: block;
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+}
+
+#__web_profiler_container .header .header-ctrl a svg {
+    display: block;
+}
+
+#__web_profiler_container .collector-data {
+    border-top: 1px solid #d9d9d9;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#__web_profiler_container .collector-data .waterfall {
+    margin: 5px 25px 5px 5px;
+    border-color: grey;
+    border-width: 0 1px 0 1px;
+    border-style: solid;
+}
+
+#__web_profiler_container .collector-data .waterfall .request-time {
+    border-bottom: 1px dotted #000;
+    background-color: #acf2ff;
+    text-align: center;
+    padding-bottom: 2px;
+    margin: 2px 0;
+}
+
+#__web_profiler_container .collector-data .waterfall .step {
+    cursor: pointer;
+    font-size: 0.6em;
+    color: #adacac;
+}
+
+#__web_profiler_container .collector-data .waterfall .step:hover {
+    filter: invert(100%);
+}
+
+#__web_profiler_container .collector-data-html {
+    padding: 0 10px;
+}
+
+#__web_profiler_container .collector-data-table table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+#__web_profiler_container .collector-data-table table tbody tr:hover, #__web_profiler_container .collector-data-table table tbody tr:nth-child(even):hover {
+    background-color: #fffa8d;
+}
+
+#__web_profiler_container .collector-data-table table tbody tr:nth-child(even) {
+    background: #f5f5f5;
+}
+
+#__web_profiler_container .collector-data-table table td {
+    border: 1px solid #d9d9d9;
+}
+
+#__web_profiler_container .collector-data-table table th {
+    text-align: left;
+}
+
+#__web_profiler_container .collector-data-table table td, #__web_profiler_container .collector-data-table table th {
+    overflow: hidden;
+    padding: 2px;
+    white-space: nowrap;
+}
+
+#__web_profiler_container .collector-data-table table td.text {
+    max-width: 0;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+#__web_profiler_container .collector-data-table table td.json {
+    white-space: pre-wrap;
+    width: 100%;
+}
+
+#__web_profiler_container .collector-data-table table td.json .string {
+    color: #1a7b25;
+}
+
+#__web_profiler_container .collector-data-table table td.json .number {
+    color: #005be4;
+}
+
+#__web_profiler_container .collector-data-table table td.json .boolean {
+    color: #003dae;
+}
+
+#__web_profiler_container .collector-data-table table td.json .null {
+    color: #003dae;
+}
+
+#__web_profiler_container .collector-data-table table td.json .key {
+    color: #842390;
+}
+
+#__web_profiler_container .collector-data-table table td.threshold-dup {
+    color: #d5a700;
+}
+
+#__web_profiler_container .collector-data-table table td.threshold-max {
+    color: red;
+}
+
+#__web_profiler_container .collector-data-table table td.threshold-min {
+    color: green;
+}
+
+#__web_profiler_container .collector-data-table table thead {
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+#__web_profiler_container .collector-data-table table tr {
+    scroll-margin-top: 100px;
+}
+
+#__web_profiler_container .collector-data-table table thead tr:nth-child(2) {
+    font-size: 0.7em;
+    background-color: #e6e6e6;
+}
+
+#__web_profiler_container .collector-data-table table tr > td:first-child,
+#__web_profiler_container .collector-data-table table tr > th:first-child {
+    border-left: 0;
+}
+
+#__web_profiler_container .header-tabs {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#__web_profiler_container .header-tabs a {
+    display: block;
+    order: 1;
+    padding: 0.5em;
+}
+
+#__web_profiler_container .header-tabs a sup {
+    background-color: grey;
+    border-radius: 3px;
+    color: white;
+    padding: 1px 2px;
+}
+
+#__web_profiler_container .header-tabs a.active {
+    background: #fff;
+}
+
+#__web_profiler_container .header-tabs a:hover {
+    background: #d6d6d6;
+}
+
+#__web_profiler_container .ellipsis {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+#__web_profiler_container .requests {
+    border-right: 1px solid #d9d9d9;
+    height: 100%;
+    overflow-y: auto;
+    width: 15%;
+    min-width: 15%;
+}
+
+#__web_profiler_container .requests .timing {
+    display: flex;
+}
+
+#__web_profiler_container .requests .timing div {
+    height: 5px;
+}
+
+#__web_profiler_container .requests .uri {
+    color: grey;
+    padding: 3px 7px;
+}
+
+#__web_profiler_container .requests a.request {
+    background: #e6e6e6;
+    border-bottom: 1px solid #d9d9d9;
+    cursor: pointer;
+    display: block;
+    opacity: 0.5;
+    height: 45px;
+}
+
+#__web_profiler_container .requests a.request.active {
+    background: #fff;
+    opacity: 1;
+}
+
+#__web_profiler_container .requests a.request:hover {
+    opacity: 1;
+}
+
+#__web_profiler_container, #__web_profiler_container * {
+    color: #4c4c4c;
+}
+
+
+
