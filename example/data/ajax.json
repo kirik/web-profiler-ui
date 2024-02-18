@@ -6,8 +6,8 @@
     "response_headers": [],
     "total_time": "-",
     "peak_memory": 4194304,
-    "collectors_data": {
-      "Base\\PhpProfiler\\Collector\\LocalCache": {
+    "collectors_data": [
+      {
         "props": {
           "title": "LocalCache",
           "cssColor": "#00FFCC",
@@ -56,7 +56,7 @@
           }
         ]
       },
-      "Base\\PhpProfiler\\Collector\\ES": {
+      {
         "props": {
           "title": "ES",
           "cssColor": "#CC0099",
@@ -100,7 +100,7 @@
           }
         ]
       },
-      "Base\\PhpProfiler\\Collector\\MySQL": {
+      {
         "props": {
           "title": "MySQL",
           "cssColor": "#0000FF",
@@ -167,7 +167,7 @@
           }
         ]
       },
-      "Base\\PhpProfiler\\Collector\\Log": {
+      {
         "props": {
           "title": "Log",
           "cssColor": "#663333",
@@ -196,7 +196,7 @@
           }
         ]
       }
-    },
+    ],
     "start_time": 1708231434.391469,
     "duration": 0.39930295944213867
   }
