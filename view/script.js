@@ -1,5 +1,5 @@
 (function () {
-    return self = {
+    let self = {
         defaultIframeHeightPx: 250,
         minimizedIframeHeightPx: 45,
         lsPoppedOut: '__profilerPoppedOut',
@@ -598,6 +598,11 @@
                 },
             },
         },
-    }
-})
-().init(/**initJson**/);
+    };
+
+    // initJson comment will be replaced with `const initJson = {...};` by adapters
+    /*!initJson*/
+    self.init(initJson);
+
+    return self;
+})();
