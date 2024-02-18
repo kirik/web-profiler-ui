@@ -25,9 +25,9 @@ class Renderer
         return self::_getFileContent('script' . ($minify ? '.min' : '') . '.js');
     }
 
-    protected static function _getHtml(bool $minify): string
+    protected static function _getHtml(): string
     {
-        return self::_getFileContent('template' . ($minify ? '.min' : '') . '.html');
+        return self::_getFileContent('template.html');
     }
 
     protected static function _getFileContent(string $fileName): string
