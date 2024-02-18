@@ -4,8 +4,8 @@
   "response_headers": [],
   "total_time": "-",
   "peak_memory": 4194304,
-  "collectors_data": {
-    "Base\\PhpProfiler\\Collector\\LocalCache": {
+  "collectors_data": [
+    {
       "props": {
         "title": "LocalCache",
         "template": "table",
@@ -53,7 +53,7 @@
         }
       ]
     },
-    "Base\\PhpProfiler\\Collector\\ES": {
+    {
       "props": {
         "title": "ES",
         "template": "table",
@@ -96,7 +96,7 @@
         }
       ]
     },
-    "Base\\PhpProfiler\\Collector\\MySQL": {
+    {
       "props": {
         "title": "MySQL",
         "cssColor": "red",
@@ -163,7 +163,7 @@
         }
       ]
     },
-    "Base\\PhpProfiler\\Collector\\Log": {
+    {
       "props": {
         "title": "Log",
         "template": "table",
@@ -191,7 +191,7 @@
         }
       ]
     }
-  },
+  ],
   "start_time": 1708231434.391469,
   "duration": 0.39930295944213867
 }
