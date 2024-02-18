@@ -8,7 +8,6 @@
     "Base\\PhpProfiler\\Collector\\LocalCache": {
       "props": {
         "title": "LocalCache",
-        "cssColor": "#00FFCC",
         "template": "table",
         "metrics": {
           "query": {
@@ -57,7 +56,6 @@
     "Base\\PhpProfiler\\Collector\\ES": {
       "props": {
         "title": "ES",
-        "cssColor": "#CC0099",
         "template": "table",
         "metrics": {
           "query": {
@@ -101,7 +99,7 @@
     "Base\\PhpProfiler\\Collector\\MySQL": {
       "props": {
         "title": "MySQL",
-        "cssColor": "#0000FF",
+        "cssColor": "red",
         "template": "table",
         "metrics": {
           "query": {
@@ -168,7 +166,6 @@
     "Base\\PhpProfiler\\Collector\\Log": {
       "props": {
         "title": "Log",
-        "cssColor": "#663333",
         "template": "table",
         "metrics": {
           "message": {
