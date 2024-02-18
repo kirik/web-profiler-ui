@@ -2,8 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>WEB profiler ui</title>
+    <title>WEB profiler UI</title>
     <script>
+        const useMinified = true;
+        const templateFile = 'view/template' + (useMinified ? '.min' : '') + '.html',
+            scriptFile = 'view/script' + (useMinified ? '.min' : '') + '.js',
+            styleFile = 'view/style' + (useMinified ? '.min' : '') + '.css',
+            dataFile = 'example/data/initial.json';
+
         function loadFile(filename) {
             return new Promise((resolve) => {
                 let xhr = new XMLHttpRequest();
@@ -20,17 +26,17 @@
         }
 
         try {
-            Promise.all([loadFile('template.html'), loadFile('script.js'), loadFile('style.css'), loadFile('example/data/initial.json')]).then((values) => {
+            Promise.all([loadFile(templateFile), loadFile(scriptFile), loadFile(styleFile), loadFile(dataFile)]).then((values) => {
                 var files = {};
                 for (let i in values) {
                     files[values[i].filename] = values[i].data;
                 }
-                let js = files['script.js'].replace('/**initJson**/', JSON.stringify({
-                    css: files['style.css'],
-                    data: JSON.parse(files['example/data/initial.json'])
-                }));
+                let js = files[scriptFile].replace('/*!initJson*/', 'const initJson = ' + JSON.stringify({
+                    css: files[styleFile],
+                    data: JSON.parse(files[dataFile])
+                }) + ';');
                 let container = document.createElement('div');
-                container.innerHTML = files['template.html'].replace('/**script**/', js);
+                container.innerHTML = files[templateFile].replace('/*!script*/', js);
 
                 // activate JS
                 let oldScriptNode = container.getElementsByTagName('script')[0];
@@ -39,7 +45,6 @@
                 oldScriptNode.parentNode.replaceChild(newScriptNode, oldScriptNode);
                 document.body.appendChild(container);
             });
-            // do other actions
         } catch (ex) {
         }
 
