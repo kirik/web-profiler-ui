@@ -1,0 +1,21 @@
+{
+  "name": "kirik/web-profiler-ui",
+  "description": "Multiplatform WEB profiler",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Kirik\\WebProfilerUi\\": "adapters/"
+    }
+  },
+  "authors": [
+    {
+      "name": "kirik",
+      "email": "cyrus.hirvi@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=7.0"
+  }
+}
