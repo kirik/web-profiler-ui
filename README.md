@@ -1,4 +1,5 @@
-# php-profiler
-PHP Profiler
+# web-profiler
+
+WEB Profiler
 
 python3 -m http.server
