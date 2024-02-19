@@ -1,19 +1,21 @@
 # WEB Profiler UI
 
-Created to simplify process of bottlenecks searching in a web projects.
+Created to simplify process of bottlenecks searching in a web
+projects. [Click is here](http://kirik.github.io/web-profiler-ui/) to see it in action.
 
 ## Features
 
 - backend independent design: can be used with any backend (php, golang, node.js, java, ...)
-    - php `supported`
+    - php `supported` (please refer to the [library](https://github.com/kirik/web-profiler-php))
     - golang `in development`
-    - for other please don't hesitate to publish adapter for your language
+    - for other please don't hesitate to publish adapter for your programming language
 - [docked mode](#docked-mode)
 - [floating window mode](#floating-window-mode)
 - waterfall span view
 - AJAX requests support
 - small footprint
 - no dependencies: written with vanilla JS, CSS and HTML
+- stateful with localStorage (remembers docing/floating mode, folding and size)
 
 ### Floating window mode
 
@@ -62,7 +64,7 @@ Profiler is embedding using iframe just to avoid CSS collisions with the parent 
 [style.css](view%2Fstyle.css) contans main CSS for profiler
 [template.html](view%2Ftemplate.html) is the main template file
 
-Backends should send appropriate response to be parsed by profiler and draw it:
+Backends should send appropriate response to be parsed by profiler and draw spans:
 
 ```json
 {
