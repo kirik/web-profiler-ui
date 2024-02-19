@@ -5,7 +5,7 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Kirik\\WebProfilerUi\\": "adapters/"
+      "WebProfilerUi\\": "adapters/"
     }
   },
   "authors": [
@@ -14,6 +14,7 @@
       "email": "cyrus.hirvi@gmail.com"
     }
   ],
+  "minimum-stability": "stable",
   "require": {
     "php": ">=7.0"
   }

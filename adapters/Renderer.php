@@ -1,6 +1,6 @@
 <?php
 
-namespace Kirik\WebProfilerUi;
+namespace WebProfilerUi;
 
 class Renderer
 {
