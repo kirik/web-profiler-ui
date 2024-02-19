@@ -39,8 +39,9 @@ If you'd like to run project locally:
 git clone git@github.com:kirik/web-profiler-ui.git && cd web-profiler-ui
 ```
 
-2. run any HTTP server to open `index.html`
-   **Python**
+2. run any HTTP server to open `index.html`:
+
+**Python**
 
 ```shell
 python3 -m http.server
@@ -53,7 +54,8 @@ php -S localhost:8000
 ```
 
 **IntelliJ IDEs**
-Or you can run project with you IntelliJ IDE using embedded webserver. Just open `index.html` and click on favorite
+
+you can run project with you IntelliJ IDE using embedded webserver. Just open `index.html` and click on favorite
 browser icon in browser toolbar:
 ![intellij_run.png](doc/intellij_run.png)
 
