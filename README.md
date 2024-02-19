@@ -170,3 +170,10 @@ composer dumpautoload
 ```
 
 and then open [index.php](index.php).
+
+## Roadmap
+
+1. [ ] create playground
+2. [ ] add php library
+3. [ ] add golang adapter and library
+4. [ ] add dark mode
