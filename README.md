@@ -8,7 +8,7 @@ projects. [Click here](http://kirik.github.io/web-profiler-ui/) to see it in act
 - backend independent design: can be used with any backend (php, golang, node.js, java, ...)
     - php `supported` (please refer to the [library](https://github.com/kirik/web-profiler-php))
     - golang `in development`
-    - for other please don't hesitate to publish adapter for your programming language
+  - for other please don't hesitate to PR adapter for your programming language
 - [docked mode](#docked-mode)
 - [floating window mode](#floating-window-mode)
 - waterfall span view
@@ -39,8 +39,9 @@ If you'd like to run project locally:
 git clone git@github.com:kirik/web-profiler-ui.git && cd web-profiler-ui
 ```
 
-2. run any HTTP server to open `index.html`
-   **Python**
+2. run any HTTP server to open `index.html`:
+
+**Python**
 
 ```shell
 python3 -m http.server
@@ -53,7 +54,8 @@ php -S localhost:8000
 ```
 
 **IntelliJ IDEs**
-Or you can run project with you IntelliJ IDE using embedded webserver. Just open `index.html` and click on favorite
+
+you can run project with you IntelliJ IDE using embedded webserver. Just open `index.html` and click on favorite
 browser icon in browser toolbar:
 ![intellij_run.png](doc/intellij_run.png)
 
@@ -61,9 +63,9 @@ browser icon in browser toolbar:
 
 Profiler is embedding using iframe just to avoid CSS collisions with the parent page.
 
-[script.js](view%2Fscript.js) contains all JS used to render profiling data
-[style.css](view%2Fstyle.css) contans main CSS for profiler
-[template.html](view%2Ftemplate.html) is the main template file
+- [script.js](view%2Fscript.js) contains all JS used to render profiling data
+- [style.css](view%2Fstyle.css) contans main CSS for profiler
+- [template.html](view%2Ftemplate.html) is the main template file
 
 Backends should send appropriate response to be parsed by profiler and draw spans:
 
@@ -159,6 +161,14 @@ To render AJAX responses they should provide full response with `__profiler` pro
 I'm avoiding to use http-headers to send profiler data with ajax as it requires special settings fot http-servers.
 I also don't like to save responses to files to use them later, as it requires writable filesystem and other file
 related logic (be KISS).
+
+### Adapters
+
+Adapter is a small piece of language related code (aka interface), to connect UI to web project.
+Supported adapters:
+
+- PHP ([library](https://github.com/kirik/web-profiler-php))
+- Golang (WIP)
 
 ## Developing
 
