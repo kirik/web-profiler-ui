@@ -1,7 +1,7 @@
 # WEB Profiler UI
 
 Created to simplify process of bottlenecks searching in a web
-projects. [Click is here](http://kirik.github.io/web-profiler-ui/) to see it in action.
+projects. [Click here](http://kirik.github.io/web-profiler-ui/) to see it in action.
 
 ## Features
 
