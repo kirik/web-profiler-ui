@@ -1,6 +1,6 @@
 # WEB Profiler UI
 
-Created to simplify process of searching bottlenecks in a web projects.
+Created to simplify process of bottlenecks searching in a web projects.
 
 ## Features
 
