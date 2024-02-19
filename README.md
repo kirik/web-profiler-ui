@@ -1,22 +1,22 @@
 # WEB Profiler UI
 
-Created to simplify process of bottlenecks searching in a web
+Created to simplify the process of searching for bottlenecks in web
 projects. [Click here](http://kirik.github.io/web-profiler-ui/) to see it in action.
 
 ## Features
 
-- backend independent design: can be used with any backend (php, golang, node.js, java, ...)
-    - php `supported` (please refer to the [library](https://github.com/kirik/web-profiler-php))
-    - golang `in development`
-  - for other please don't hesitate to PR adapter for your programming language
-- [docked mode](#docked-mode)
-- [floating window mode](#floating-window-mode)
-- waterfall span view
+- Backend-independent design: can be used with any backend (PHP, Golang, Node.js, Java, ...)
+    - PHP `supported` (please refer to the [library](https://github.com/kirik/web-profiler-php))
+    - Golang `in development`
+    - For others, please don't hesitate to PR an adapter for your programming language
+- [Docked mode](#docked-mode)
+- [Floating window mode](#floating-window-mode)
+- Waterfall span view
 - AJAX requests support
-- small footprint
-- no dependencies: written with vanilla JS, CSS and HTML
-- stateful with localStorage (remembers docing/floating mode, folding and size)
-- go to row from Summary view (just click on span)
+- Small footprint
+- No dependencies: written with vanilla JS, CSS, and HTML
+- Stateful with localStorage (remembers docking/floating mode, folding, and size)
+- Go to row from Summary view (just click on span)
 
 ### Floating window mode
 
@@ -28,18 +28,18 @@ projects. [Click here](http://kirik.github.io/web-profiler-ui/) to see it in act
 
 ## Build&Run
 
-You don't need to run anything just to play with profiler. Please
-see [playground](http://kirik.github.io/web-profiler-ui/).
+You don't need to run anything just to play with the profiler. Please see
+the [playground](http://kirik.github.io/web-profiler-ui/).
 
-If you'd like to run project locally:
+If you'd like to run the project locally:
 
-1. clone this project
+1. Clone this project
 
 ```shell
 git clone git@github.com:kirik/web-profiler-ui.git && cd web-profiler-ui
 ```
 
-2. run any HTTP server to open `index.html`:
+2. Run any HTTP server to open `index.html`:
 
 **Python**
 
@@ -55,29 +55,29 @@ php -S localhost:8000
 
 **IntelliJ IDEs**
 
-you can run project with you IntelliJ IDE using embedded webserver. Just open `index.html` and click on favorite
-browser icon in browser toolbar:
+You can run the project with your IntelliJ IDE using the embedded web server. Just open `index.html` and click on
+your favorite browser icon in the browser toolbar:
 ![intellij_run.png](doc/intellij_run.png)
 
 ## Internals
 
-Profiler is embedding using iframe just to avoid CSS collisions with the parent page.
+Profiler is embedded using an iframe just to avoid CSS collisions with the parent page.
 
 - [script.js](view%2Fscript.js) contains all JS used to render profiling data
-- [style.css](view%2Fstyle.css) contans main CSS for profiler
+- [style.css](view%2Fstyle.css) contains the main CSS for the profiler
 - [template.html](view%2Ftemplate.html) is the main template file
 
-Backends should send appropriate response to be parsed by profiler and draw spans:
+Backends should send an appropriate response to be parsed by the profiler and draw spans:
 
 ```json
 {
   // (string) URI
   "request_uri": "/uri/requested/",
-  // (int) overall memory used by request in bytes
+  // (int) overall memory used by the request in bytes
   "peak_memory": 0,
   // (array) collectors objects, see `Collector object`
   "collectors_data": [],
-  // (float) unix timestamp with microseconds
+  // (float) Unix timestamp with microseconds
   "start_time": 1708231434.391469,
   // (float) overall time used to respond in seconds (with microseconds)
   "duration": 0.39930295944213867,
@@ -93,15 +93,15 @@ Backends should send appropriate response to be parsed by profiler and draw span
 ```json
 {
   "props": {
-    // (string, required) title to show in profiler's tab
+    // (string, required) title to show in the profiler's tab
     "title": "Log",
-    // (string, required) template for collector's data to display; available tamplates:
-    //    - `table`: data will be displayed as table
-    //    - `html`: data will be shown as html
+    // (string, required) template for collector's data to display; available templates:
+    //    - `table`: data will be displayed as a table
+    //    - `html`: data will be shown as HTML
     "template": "table",
     // (string, optional) color associated with this collector
     //    - can be either hex `#af0000`, `rgb(255,0,0)` or color name `gold`
-    //    - if no color specified, predefined color will be associated (by crc32 from `title` and 216-color palette)
+    //    - if no color is specified, a predefined color will be associated (by CRC32 from `title` and a 216-color palette)
     "cssColor": "#663333",
     // (float, required) summary time for this collector 
     "duration": 0,
@@ -111,22 +111,22 @@ Backends should send appropriate response to be parsed by profiler and draw span
       "key": {
         // (string, required) metric title, which will be displayed
         "title": "Title",
-        // (string, required) metric data type - different types, has it's own format logic:
+        // (string, required) metric data type - different types have their own format logic:
         //    - `seconds` - will be formatted as Xs/Xms/Xμs
         //    - `bytes` - will be formatted as XB/XKiB/XMiB/...
         //    - `unixtime` - will be formatted as time (for example: 23:43:54) 
-        //    - `integer` - will be formatted as number
+        //    - `integer` - will be formatted as a number
         //    - `json` - 
         //    - `text` - long texts (such as SQL queries)
-        //        For `table` template next features are available:
-        //          text will be truncated with ellipsises (using CSS);
+        //        For `table` template, the following features are available:
+        //          text will be truncated with ellipses (using CSS);
         //          duplicated values will be highlighted;
-        //          copy full content on double click;
-        //    - `string` (default) - just a string value, will not be truncated as oppose to `text` type
+        //          copy the full content on double click;
+        //    - `string` (default) - just a string value, will not be truncated as opposed to `text` type
         "type": "type"
       },
-      // `__start_time` and `__duration` are standard metrics which will be used to generate Summary tab
-      // with spans waterfall. You can skip this metrics to not display collector in Summary tab
+      // `__start_time` and `__duration` are standard metrics which will be used to generate the Summary tab
+      // with spans waterfall. You can skip these metrics to not display the collector in the Summary tab
       "__start_time": {
         "title": "Start time",
         "type": "seconds"
@@ -147,7 +147,7 @@ Backends should send appropriate response to be parsed by profiler and draw span
 }
 ```
 
-To render AJAX responses they should provide full response with `__profiler` property along with buisness data:
+To render AJAX responses, they should provide a full response with the `__profiler` property along with business data:
 
 ```json
 {
@@ -158,14 +158,14 @@ To render AJAX responses they should provide full response with `__profiler` pro
 }
 ```
 
-I'm avoiding to use http-headers to send profiler data with ajax as it requires special settings fot http-servers.
-I also don't like to save responses to files to use them later, as it requires writable filesystem and other file
-related logic (be KISS).
+I'm avoiding using HTTP headers to send profiler data with AJAX as it requires special settings for HTTP servers. I also
+don't like to save responses to files to use them later, as it requires a writable filesystem and other file-related
+logic (be KISS).
 
 ### Adapters
 
-Adapter is a small piece of language related code (aka interface), to connect UI to web project.
-Supported adapters:
+An adapter is a small piece of language-related code (aka interface) to connect the UI to the web project. Supported
+adapters:
 
 - PHP ([library](https://github.com/kirik/web-profiler-php))
 - Golang (WIP)
@@ -176,7 +176,7 @@ Supported adapters:
 
 ### [PHP adapter](adapters/Renderer.php)
 
-Please init composer with command
+Please initialize Composer with the command
 
 ```shell
 composer dumpautoload
