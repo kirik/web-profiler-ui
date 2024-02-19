@@ -16,6 +16,7 @@ projects. [Click is here](http://kirik.github.io/web-profiler-ui/) to see it in 
 - small footprint
 - no dependencies: written with vanilla JS, CSS and HTML
 - stateful with localStorage (remembers docing/floating mode, folding and size)
+- go to row from Summary view (just click on span)
 
 ### Floating window mode
 
@@ -175,7 +176,7 @@ and then open [index.php](index.php).
 
 ## Roadmap
 
-1. [ ] create playground
+1. [x] create playground
 2. [ ] add php library
 3. [ ] add golang adapter and library
 4. [ ] add dark mode
