@@ -2,13 +2,11 @@
   "request_uri": "\/dbg\/",
   "request_headers": [],
   "response_headers": [],
-  "total_time": "-",
   "peak_memory": 4194304,
-  "collectors_data": {
-    "Base\\PhpProfiler\\Collector\\LocalCache": {
+  "collectors_data": [
+    {
       "props": {
         "title": "LocalCache",
-        "cssColor": "#00FFCC",
         "template": "table",
         "metrics": {
           "query": {
@@ -44,20 +42,19 @@
       "duration": 0.0017809867858886719,
       "data": [
         {
-          "query": "GET brand_settings_5",
+          "query": "GET settings",
           "__start_time": 1708231434.468543,
           "duration": 0.0017790794372558594,
           "memory": 2816,
           "rows_count": 1,
-          "method": "Base\\BrandSettings::_getSettings",
+          "method": "Base\\Settings::_getSettings",
           "__duration": 0.0017809867858886719
         }
       ]
     },
-    "Base\\PhpProfiler\\Collector\\ES": {
+    {
       "props": {
         "title": "ES",
-        "cssColor": "#CC0099",
         "template": "table",
         "metrics": {
           "query": {
@@ -89,7 +86,7 @@
       "duration": 0.04324603080749512,
       "data": [
         {
-          "query": "GET MAPPING {\"index\":\"ww.cat_users\"}",
+          "query": "GET MAPPING {\"index\":\"users\"}",
           "__start_time": 1708231434.636523,
           "duration": 0.04324698448181152,
           "memory": 46288,
@@ -98,10 +95,9 @@
         }
       ]
     },
-    "Base\\PhpProfiler\\Collector\\MySQL": {
+    {
       "props": {
         "title": "MySQL",
-        "cssColor": "#0000FF",
         "template": "table",
         "metrics": {
           "query": {
@@ -146,7 +142,7 @@
           "__duration": 0.019613027572631836
         },
         {
-          "query": "USE `sac`",
+          "query": "USE `default`",
           "__start_time": 1708231434.747614,
           "duration": 0.021682024002075195,
           "memory": 752,
@@ -165,10 +161,9 @@
         }
       ]
     },
-    "Base\\PhpProfiler\\Collector\\Log": {
+    {
       "props": {
         "title": "Log",
-        "cssColor": "#663333",
         "template": "table",
         "metrics": {
           "message": {
@@ -194,7 +189,7 @@
         }
       ]
     }
-  },
+  ],
   "start_time": 1708231434.391469,
   "duration": 0.39930295944213867
 }
