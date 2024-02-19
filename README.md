@@ -63,9 +63,9 @@ browser icon in browser toolbar:
 
 Profiler is embedding using iframe just to avoid CSS collisions with the parent page.
 
-[script.js](view%2Fscript.js) contains all JS used to render profiling data
-[style.css](view%2Fstyle.css) contans main CSS for profiler
-[template.html](view%2Ftemplate.html) is the main template file
+- [script.js](view%2Fscript.js) contains all JS used to render profiling data
+- [style.css](view%2Fstyle.css) contans main CSS for profiler
+- [template.html](view%2Ftemplate.html) is the main template file
 
 Backends should send appropriate response to be parsed by profiler and draw spans:
 
