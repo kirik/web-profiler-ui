@@ -8,7 +8,7 @@ projects. [Click is here](http://kirik.github.io/web-profiler-ui/) to see it in 
 - backend independent design: can be used with any backend (php, golang, node.js, java, ...)
     - php `supported` (please refer to the [library](https://github.com/kirik/web-profiler-php))
     - golang `in development`
-    - for other please don't hesitate to publish adapter for your programming language
+  - for other please don't hesitate to PR adapter for your programming language
 - [docked mode](#docked-mode)
 - [floating window mode](#floating-window-mode)
 - waterfall span view
@@ -159,6 +159,14 @@ To render AJAX responses they should provide full response with `__profiler` pro
 I'm avoiding to use http-headers to send profiler data with ajax as it requires special settings fot http-servers.
 I also don't like to save responses to files to use them later, as it requires writable filesystem and other file
 related logic (be KISS).
+
+### Adapters
+
+Adapter is a small piece of language related code (aka interface), to connect UI to web project.
+Supported adapters:
+
+- PHP ([library](https://github.com/kirik/web-profiler-php))
+- Golang (WIP)
 
 ## Developing
 
