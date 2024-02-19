@@ -7,7 +7,7 @@ class Renderer
     public static function render(array $data, bool $minify): string
     {
         $js = str_replace(
-            '/*!initJson**/',
+            '/*!initJson*/',
             'const initJson = ' . json_encode(['css' => self::_getCss($minify), 'data' => $data]) . ';',
             self::_getJs($minify)
         );

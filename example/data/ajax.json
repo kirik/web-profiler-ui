@@ -1,16 +1,13 @@
 {
-  "some_original": "response",
   "__profiler": {
     "request_uri": "\/ajax\/",
     "request_headers": [],
     "response_headers": [],
-    "total_time": "-",
-    "peak_memory": 4194304,
-    "collectors_data": {
-      "Base\\PhpProfiler\\Collector\\LocalCache": {
+    "peak_memory": 2097152,
+    "collectors_data": [
+      {
         "props": {
           "title": "LocalCache",
-          "cssColor": "#00FFCC",
           "template": "table",
           "metrics": {
             "query": {
@@ -43,23 +40,22 @@
             }
           }
         },
-        "duration": 0.0017809867858886719,
+        "duration": 4.696846008300781e-5,
         "data": [
           {
-            "query": "GET brand_settings_5",
-            "__start_time": 1708231434.468543,
-            "duration": 0.0017790794372558594,
+            "query": "GET settings",
+            "__start_time": 1708311520.126699,
+            "duration": 4.9114227294921875e-5,
             "memory": 2816,
             "rows_count": 1,
-            "method": "Base\\BrandSettings::_getSettings",
-            "__duration": 0.0017809867858886719
+            "method": "Base\\Settings::_getSettings",
+            "__duration": 4.696846008300781e-5
           }
         ]
       },
-      "Base\\PhpProfiler\\Collector\\ES": {
+      {
         "props": {
           "title": "ES",
-          "cssColor": "#CC0099",
           "template": "table",
           "metrics": {
             "query": {
@@ -88,22 +84,21 @@
             }
           }
         },
-        "duration": 0.04324603080749512,
+        "duration": 0.010460138320922852,
         "data": [
           {
-            "query": "GET MAPPING {\"index\":\"ww.cat_users\"}",
-            "__start_time": 1708231434.636523,
-            "duration": 0.04324698448181152,
+            "query": "GET MAPPING {\"index\":\"users\"}",
+            "__start_time": 1708311520.136329,
+            "duration": 0.010447978973388672,
             "memory": 46288,
             "rows_count": 0,
-            "__duration": 0.04324603080749512
+            "__duration": 0.010460138320922852
           }
         ]
       },
-      "Base\\PhpProfiler\\Collector\\MySQL": {
+      {
         "props": {
           "title": "MySQL",
-          "cssColor": "#0000FF",
           "template": "table",
           "metrics": {
             "query": {
@@ -136,41 +131,40 @@
             }
           }
         },
-        "duration": 0.061868906021118164,
+        "duration": 0.002820730209350586,
         "data": [
           {
             "query": "connect",
-            "__start_time": 1708231434.727932,
-            "duration": 0.019603967666625977,
+            "__start_time": 1708311520.147952,
+            "duration": 0.0007898807525634766,
             "memory": 920,
             "rows_count": 0,
             "method": "Base\\Driver\\SQL\\Server::_connect",
-            "__duration": 0.019613027572631836
+            "__duration": 0.0007898807525634766
           },
           {
-            "query": "USE `sac`",
-            "__start_time": 1708231434.747614,
-            "duration": 0.021682024002075195,
+            "query": "USE `default`",
+            "__start_time": 1708311520.148791,
+            "duration": 0.0006940364837646484,
             "memory": 752,
             "rows_count": 0,
             "method": "Base\\Driver\\SQL\\Server::_switchDb",
-            "__duration": 0.021687984466552734
+            "__duration": 0.0006940364837646484
           },
           {
             "query": "SELECT `users`.* FROM `users` LIMIT 1 OFFSET 0",
-            "__start_time": 1708231434.769457,
-            "duration": 0.02056598663330078,
+            "__start_time": 1708311520.149542,
+            "duration": 0.0013349056243896484,
             "memory": 22792,
             "rows_count": 1,
             "method": "App\\Dbg\\Controller\\Index::indexAction",
-            "__duration": 0.020567893981933594
+            "__duration": 0.001336812973022461
           }
         ]
       },
-      "Base\\PhpProfiler\\Collector\\Log": {
+      {
         "props": {
           "title": "Log",
-          "cssColor": "#663333",
           "template": "table",
           "metrics": {
             "message": {
@@ -192,12 +186,29 @@
           {
             "message": "\"test\"",
             "file_line": "\/var\/www\/html\/App\/Dbg\/Controller\/Index.php:362",
-            "time": 1708231434
+            "time": 1708311520
+          }
+        ]
+      },
+      {
+        "props": {
+          "title": "HTML",
+          "template": "html",
+          "metrics": {
+            "html": {
+              "title": "Some debug html"
+            }
+          }
+        },
+        "duration": 0,
+        "data": [
+          {
+            "html": "<h1>Some test HTML</h1><p>Hello world!</p>"
           }
         ]
       }
-    },
-    "start_time": 1708231434.391469,
-    "duration": 0.39930295944213867
+    ],
+    "start_time": 1708311520.125643,
+    "duration": 0.0365750789642334
   }
 }

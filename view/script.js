@@ -211,12 +211,12 @@
         },
         addRequest: function (requestData, selectByDefault = true) {
             var collTimeSum = 0;
-            for (let k in requestData['collectors_data']) {
-                collTimeSum += requestData['collectors_data'][k]['duration'];
+            for (let i in requestData['collectors_data']) {
+                collTimeSum += requestData['collectors_data'][i]['duration'];
             }
             var timingsHtml = '';
-            for (let k in requestData['collectors_data']) {
-                let collectorData = requestData['collectors_data'][k];
+            for (let i in requestData['collectors_data']) {
+                let collectorData = requestData['collectors_data'][i];
                 let color = this.getCollectorColor(collectorData['props']);
                 let widthPrc = Math.round(collectorData['duration'] / collTimeSum * 10000) / 100;
                 timingsHtml += '<div style="background-color: ' + color + ';  width: ' + widthPrc + '%"></div>';
@@ -268,10 +268,10 @@
         },
         addCollectors: function (requestData) {
             var summaryData = [];
-            for (var collectorClass in requestData['collectors_data']) {
-                let collectorData = requestData['collectors_data'][collectorClass];
+            for (let i in requestData['collectors_data']) {
+                let collectorData = requestData['collectors_data'][i];
                 let tagA = this.getCollectorTab(collectorData);
-                tagA.id = 'tab_' + collectorClass.replaceAll('\\', '_').toLowerCase();
+                tagA.id = 'tab_' + i;
                 // prepare Summary
                 this.dom.getCollectorTabs().appendChild(tagA);
                 for (let i in collectorData['data']) {
