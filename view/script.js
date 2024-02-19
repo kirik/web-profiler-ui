@@ -1,5 +1,68 @@
 (function () {
-    return self = {
+    let crc32 = {
+        _table: null,
+        _crc32GetTable: function () {
+            if (this._table !== null) {
+                return this._table;
+            }
+            var c;
+            this._table = [];
+            for (let n = 0; n < 256; n++) {
+                c = n;
+                for (var k = 0; k < 8; k++) {
+                    c = ((c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1));
+                }
+                this._table[n] = c;
+            }
+            return this._table;
+        },
+        calc: function (str) {
+            var crcTable = this._crc32GetTable();
+            var crc = 0 ^ (-1);
+
+            for (var i = 0; i < str.length; i++) {
+                crc = (crc >>> 8) ^ crcTable[(crc ^ str.charCodeAt(i)) & 0xFF];
+            }
+
+            return (crc ^ (-1)) >>> 0;
+        },
+    };
+
+    let colorizer = {
+        _colors: [
+            // https://onenumber.biz/blog-1/2020/8/25/tableau-color-palettes-with-many-colors-40
+            // Tableau 216 Randomized
+            '#999999', '#CCFF00', '#336600', '#00FFCC', '#CCFF66', '#009999', '#669933', '#6633FF', '#FF3366',
+            '#993300', '#3399FF', '#CC6633', '#333366', '#CC66FF', '#006666', '#00FFFF', '#0033FF', '#336633',
+            '#CC0066', '#CC6600', '#3333CC', '#CC0033', '#99FF99', '#CCFF33', '#CCCC66', '#660033', '#9966FF',
+            '#006699', '#99FFCC', '#00FF66', '#FFCCCC', '#FF3399', '#FFCC66', '#FF0066', '#33FF00', '#000000',
+            '#FF6699', '#66FFFF', '#339999', '#CC33FF', '#0066CC', '#FF33CC', '#99CCFF', '#CC3300', '#99CC99',
+            '#009900', '#9966CC', '#CC9999', '#339933', '#000066', '#6600FF', '#006633', '#33FFFF', '#33CC99',
+            '#00FF33', '#663333', '#330033', '#000033', '#9933CC', '#666600', '#669966', '#990033', '#66CC33',
+            '#33FF99', '#666699', '#00CC99', '#00CCCC', '#FF9999', '#996699', '#660066', '#663300', '#00CC00',
+            '#FFFF99', '#00CC33', '#330000', '#FF6666', '#CC00CC', '#66FF66', '#6600CC', '#FFFF00', '#9999FF',
+            '#CC99CC', '#CC3399', '#66FF99', '#9933FF', '#FF99FF', '#99CC00', '#00CCFF', '#CC0099', '#CC3333',
+            '#3366FF', '#33CCCC', '#66CCCC', '#3300CC', '#0033CC', '#6666CC', '#0066FF', '#996666', '#CCCCCC',
+            '#99FF66', '#996600', '#669999', '#333333', '#FFFF66', '#9900FF', '#333399', '#33FF33', '#00FF00',
+            '#003300', '#66FFCC', '#99CC33', '#CCFFFF', '#33FF66', '#33CC00', '#333300', '#FFFF33', '#66CC66',
+            '#FFCC33', '#99CCCC', '#999900', '#CC0000', '#6666FF', '#FF66FF', '#666666', '#669900', '#66FF00',
+            '#CC3366', '#3366CC', '#FF9933', '#3399CC', '#FF0000', '#FF33FF', '#FF9966', '#CC9900', '#FF00FF',
+            '#CC99FF', '#0000FF', '#CC33CC', '#CCFFCC', '#CCCC00', '#99FFFF', '#003333', '#FF0099', '#CCCCFF',
+            '#660000', '#33CCFF', '#FF3333', '#993399', '#3333FF', '#CC6699', '#993366', '#663366', '#990099',
+            '#99CC66', '#CC66CC', '#FF9900', '#9900CC', '#006600', '#6699CC', '#CC9933', '#33FFCC', '#FF00CC',
+            '#0000CC', '#33CC33', '#FFCC99', '#0099CC', '#993333', '#33CC66', '#6699FF', '#CCCC99', '#00CC66',
+            '#FFFFCC', '#99FF33', '#009933', '#003399', '#00FF99', '#339966', '#666633', '#0099FF', '#330066',
+            '#FF6600', '#339900', '#003366', '#990000', '#999966', '#FF6633', '#990066', '#FF66CC', '#999933',
+            '#3300FF', '#FFCC00', '#CCFF99', '#009966', '#66FF33', '#CC6666', '#9999CC', '#66CC00', '#FF99CC',
+            '#FFCCFF', '#000099', '#CC00FF', '#CC9966', '#663399', '#660099', '#336666', '#CCCC33', '#66CC99',
+            '#336699', '#996633', '#99FF00', '#6633CC', '#330099', '#66CCFF', '#FF3300', '#FF0033',
+        ],
+        getColor: function (str) {
+            return this._colors[crc32.calc(str) % this._colors.length];
+        },
+    };
+
+    let self = {
         defaultIframeHeightPx: 250,
         minimizedIframeHeightPx: 45,
         lsPoppedOut: '__profilerPoppedOut',
@@ -148,13 +211,13 @@
         },
         addRequest: function (requestData, selectByDefault = true) {
             var collTimeSum = 0;
-            for (let k in requestData['collectors_data']) {
-                collTimeSum += requestData['collectors_data'][k]['duration'];
+            for (let i in requestData['collectors_data']) {
+                collTimeSum += requestData['collectors_data'][i]['duration'];
             }
             var timingsHtml = '';
-            for (let k in requestData['collectors_data']) {
-                let collectorData = requestData['collectors_data'][k];
-                let color = collectorData['props']['cssColor'];
+            for (let i in requestData['collectors_data']) {
+                let collectorData = requestData['collectors_data'][i];
+                let color = this.getCollectorColor(collectorData['props']);
                 let widthPrc = Math.round(collectorData['duration'] / collTimeSum * 10000) / 100;
                 timingsHtml += '<div style="background-color: ' + color + ';  width: ' + widthPrc + '%"></div>';
             }
@@ -193,19 +256,22 @@
             tagA.collectorData = collectorData;
             tagA.innerHTML = collectorData['props']['title'] + ' <sup>' + tagA.collectorData['data'].length + '</sup>';
             tagA.href = '#';
-            tagA.style.borderTop = '3px solid ' + collectorData['props']['cssColor'];
+            tagA.style.borderTop = '3px solid ' + this.getCollectorColor(collectorData['props']);
             tagA.onclick = function (e) {
                 e.preventDefault();
                 self.selectTab(this);
             };
             return tagA;
         },
+        getCollectorColor: function (collectorProps) {
+            return ('cssColor' in collectorProps) ? collectorProps['cssColor'] : colorizer.getColor(collectorProps['title']);
+        },
         addCollectors: function (requestData) {
             var summaryData = [];
-            for (var collectorClass in requestData['collectors_data']) {
-                let collectorData = requestData['collectors_data'][collectorClass];
+            for (let i in requestData['collectors_data']) {
+                let collectorData = requestData['collectors_data'][i];
                 let tagA = this.getCollectorTab(collectorData);
-                tagA.id = 'tab_' + collectorClass.replaceAll('\\', '_').toLowerCase();
+                tagA.id = 'tab_' + i;
                 // prepare Summary
                 this.dom.getCollectorTabs().appendChild(tagA);
                 for (let i in collectorData['data']) {
@@ -216,7 +282,7 @@
                             'duration': dataRow['__duration'],
                             'tab': tagA,
                             'tabIndex': i,
-                            'color': collectorData['props']['cssColor'],
+                            'color': this.getCollectorColor(collectorData['props']),
                         });
                     }
                 }
@@ -598,6 +664,11 @@
                 },
             },
         },
-    }
-})
-().init(/**initJson**/);
+    };
+
+    // initJson comment will be replaced with `const initJson = {...};` by adapters
+    /*!initJson*/
+    self.init(initJson);
+
+    return self;
+})();
